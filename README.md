@@ -9,17 +9,19 @@ Little script for run event after all images loaded.
 
 <h2>jquery.creditСardFormat.js</h2>
 
-jQuery plugin for checking input field by Credit Card Format like [xxxx-xxxx-xxxx-xxxx].
+jQuery plugin for checking input field by Credit Card Format like [xxxx-xxxx-xxxx-xxxx], which add and delete hyphen.
 
-Options is two parameters: 
+2 unnecessary options: 
 <ul>
-<li>array of hyphen after specified numeral</li>
-<li>length скувше сфкв тгьиук without hyphen</li>
+<li><code>positionArray</code> - array of hyphen after specified numeral</li>
+<li><code>lengthArray</code> length of credit card number without hyphen</li>
 </ul>
 
 By default:
 
-<pre><code>
-positionArray : [4, 8, 12]
+<pre><code>positionArray : [4, 8, 12]
 lengthArray   : 16  
 </code></pre>
+
+Call: 
+<pre><code>$('input').creditСardFormat();</code></pre>
