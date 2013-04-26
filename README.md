@@ -3,6 +3,10 @@ JS
 
 js hints and hacks
 
-onload-event.js
+<h2>onload-event.js</h2>
 
-jquery.creditСardFormat.js
+Little script for run event after all images loaded.
+
+<h2>jquery.creditСardFormat.js</h2>
+
+jQuery plugin for checking 
