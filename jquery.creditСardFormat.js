@@ -11,7 +11,23 @@
       return value += ++i;
     });
 
-    this.keypress(function(ev) {
+    // paste event
+    this.bind("paste", function(e) {
+      var that = this;
+      setTimeout(function() {
+        str = that.value.replace(/\D/g, "").slice(0, settings.lengthArray);
+        s = str.slice(0, arr[0]);
+        for (var i = 0; i < settings.positionArray.length; i++) {
+          if (str.length + i > s.length) {
+            s = s.concat('-' + str.slice(settings.positionArray[i], settings.positionArray[i + 1]));          
+          } else break
+        }
+        that.value = s
+      }, 1);
+    });
+
+    // keypress event
+    this.bind('keypress', function(ev) {
       var keyCode = window.event ? ev.keyCode : ev.which;
 
       // add '-'
@@ -28,10 +44,11 @@
         }
       }
 
-      //codes for 0-9
-      if ((keyCode < 48  ) || keyCode > 57 || $(this).val().length > settings.lengthArray + 2) {
-        if (keyCode != 0 && keyCode != 8 && keyCode != 13 && !ev.ctrlKey) {
-          ev.preventDefault();
+      // codes for 0-9
+      if (!((keyCode == 118 && ev.ctrlKey ) || (keyCode == 118 && ev.metaKey)) &&
+          ((keyCode < 48  ) || keyCode > 57 || $(this).val().length > settings.lengthArray + 2)) {
+            if (keyCode != 0 && keyCode != 8 && keyCode != 13 && !ev.ctrlKey) {
+              ev.preventDefault();
         }
       }
     });
