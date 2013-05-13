@@ -7,7 +7,7 @@
     }, options);
 
     var i = -1;
-    var arr = settings.positionArray.sort(function(a,b){return a-b}).map(function(value) {
+    var arr = $.map(settings.positionArray.sort(function(a,b){return a-b}), function(value) {
       return value += ++i;
     });
 
@@ -45,7 +45,7 @@
       }
 
       // codes for 0-9
-      if (!((keyCode == 118 && ev.ctrlKey ) || (keyCode == 118 && ev.metaKey)) &&
+      if (!(keyCode == 118 && (ev.ctrlKey || ev.metaKey)) &&
           ((keyCode < 48  ) || keyCode > 57 || $(this).val().length > settings.lengthArray + 2)) {
             if (keyCode != 0 && keyCode != 8 && keyCode != 13 && !ev.ctrlKey) {
               ev.preventDefault();
