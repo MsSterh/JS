@@ -25,3 +25,13 @@ lengthArray   : 16
 
 Call: 
 <pre><code>$('input').creditСardFormat();</code></pre>
+
+
+<h2>jquery.currencyFormat.js</h2>
+
+jQuery plugin for making Currency field with "$" and commas like: $12,345.<br />
+It is wrapping input in &lt;div&gt; and adding hidden input with same name (for sending to server just a number).
+
+Call: 
+<pre><code>$('input').currencyFormat();</code></pre>
+
