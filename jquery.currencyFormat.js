@@ -1,8 +1,16 @@
 (function( $ ) {
   $.fn.currencyFormat = function(options) {
 
+    var settings = $.extend( {
+      min : 0,          // min value
+      max : 99999999    // max value
+    }, options);
+
     var convert_to_currency =  function(input, hidden_input) {
-      hidden_input.val(input.val().replace(/\D/g, ""));
+      var value = input.val().replace(/\D/g, "");
+      if (value < settings.min) { value = settings.min };
+      if (value > settings.max) { value = settings.max };
+      hidden_input.val(value);
 
       if (hidden_input.val() != '') {
         var number = hidden_input.val().split('').reverse().join('');
