@@ -6,6 +6,35 @@
       max : 99999999    // max value
     }, options);
 
+
+    function getCaret(el) {
+      var pos = 0;
+      if (document.selection) {
+        // IE Support
+        // el.focus ();
+        var Sel = document.selection.createRange ();
+        Sel.moveStart ('character', -el.value.length);
+        pos = Sel.text.length;
+      } else if (el.selectionStart || el.selectionStart == '0')
+      // Firefox support
+        pos = el.selectionStart;
+      return (pos);
+    }
+
+    function setCaret(el, pos) {
+      if(el.setSelectionRange) {
+        // el.focus();
+        el.setSelectionRange(pos,pos);
+      }
+      else if (el.createTextRange) {
+        var range = el.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', pos);
+        range.moveStart('character', pos);
+        range.select();
+      }
+    }
+
     var convert_to_currency =  function(input, hidden_input) {
       var value = input.val().replace(/\D/g, "");
       if (value < settings.min) { value = settings.min };
@@ -46,7 +75,23 @@
           }
         })
 
-        .bind('keyup', function() {
+        .bind('keyup', function(ev) {
+          var pos = getCaret($(this).get(0)),
+              keyCode = window.event ? ev.keyCode : ev.which,
+              comma = input.val().split(',').length;
+
+          convert_to_currency(input, hidden_input);
+
+          comma = comma - input.val().split(',').length;
+          if ((comma > 0) && (pos != 1)) {
+            pos--;
+          } else if ((comma < 0) && (keyCode != 8) || (input.val().length == 2) && (pos == 1)) {
+            pos++;
+          }
+          setCaret($(this).get(0), pos);
+        })
+
+        .bind('focusout', function() {
           convert_to_currency(input, hidden_input);
         });
     })
