@@ -35,3 +35,10 @@ It is wrapping input in &lt;div&gt; and adding hidden input with same name (for 
 Call: 
 <pre><code>$('input').currencyFormat();</code></pre>
 
+<h2>ellipsis.js</h2>
+
+jQuery plugin for cutting text and adding ellipsis at the end.<br />
+Require DIV with "overflow: hidden" style and fixed height and tag P inside.
+
+Call: 
+<pre><code>$('.ellipsis').addEllipsis();</code></pre>
