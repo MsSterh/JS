@@ -42,3 +42,14 @@ Require DIV with "overflow: hidden" style and fixed height and tag P inside.
 
 Call: 
 <pre><code>$('.ellipsis').addEllipsis();</code></pre>
+
+<h2>jquery.popup.js</h2>
+jQuery plugin for creating popup near element target: by showing hidden popup or loading by ajax.<br />
+Use: <br />
+<code>[data-popup-link='name']</code> - use for target with <code>name</code> as identifier<br />
+<code>[data-popup-content='name']</code> - popup content, be default should be hidden<br />
+<code>[data-popup-url='url']</code> - set url for ajax or <code>'href'</code><br />
+<code>[data-popup-close='name']</code> - add close button on popup
+
+Call: 
+<pre><code>$('[data-popup-link]').popup();</code></pre>
