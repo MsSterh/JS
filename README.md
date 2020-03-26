@@ -3,6 +3,12 @@ JS
 
 js hints and hacks
 
+<h2>stringToColor.js</h2>
+
+`stringToColor` function returns the same color for the same string.
+
+Can be used as a background color for avatar with white text on it, because it does not return too much light colors.
+
 <h2>onload-event.js</h2>
 
 Little script for run event after all images loaded.
